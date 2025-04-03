@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürpriz Senin İçin ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .hidden-message {
+            margin-top: 20px;
+            display: none;
+            font-size: 20px;
+            color: #ff3366;
+        }
+        .reveal-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Senin İçin Küçük Bir Sürpriz! ❤️</h1>
+    <p>Bu dünyadaki en özel kişi olduğun için, senin için bu siteyi yaptım!</p>
+    
+    <div class="gallery">
+        <img src="photo1.jpg" alt="Bizim Fotoğrafımız">
+        <img src="photo2.jpg" alt="Güzel Bir Anımız">
+        <img src="photo3.jpg" alt="En Güzel Anlardan Biri">
+    </div>
+    
+    <button class="reveal-btn" onclick="showMessage()">Bana Söylemek İstediğin Bir Şey Var mı? 🥰</button>
+    <p class="hidden-message" id="message">Seni her şeyden çok seviyorum! ❤️</p>
+    
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
