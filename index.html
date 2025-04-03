@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TESTTEST ❤️</title>
+    <title>Sürpriz Senin İçin ❤️</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #ffe6e6;
+        }
+        #passwordScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .gallery {
             display: flex;
@@ -28,7 +40,7 @@
             font-size: 20px;
             color: #ff3366;
         }
-        .reveal-btn {
+        .reveal-btn, .submit-btn {
             margin-top: 20px;
             padding: 10px 20px;
             font-size: 16px;
@@ -41,19 +53,40 @@
     </style>
 </head>
 <body>
-    <h1>Senin İçin Küçük Bir Sürpriz! ❤️</h1>
-    <p>Bu dünyadaki en özel kişi olduğun için, senin için bu siteyi yaptım!</p>
-    
-    <div class="gallery">
-        <img src="photo1.jpg" alt="Bizim Fotoğrafımız">
-        <img src="photo2.jpg" alt="Güzel Bir Anımız">
-        <img src="photo3.jpg" alt="En Güzel Anlardan Biri">
+    <div id="passwordScreen">
+        <h2>Bu siteye erişmek için şifreyi girin 🔐</h2>
+        <input type="password" id="passwordInput" placeholder="Şifreyi girin">
+        <button class="submit-btn" onclick="checkPassword()">Giriş Yap</button>
+        <p id="errorMessage" style="color: red; display: none;">Hatalı şifre, tekrar deneyin!</p>
+    </div>
+
+    <div id="mainContent" style="display: none;">
+        <h1>Senin İçin Küçük Bir Sürpriz! ❤️</h1>
+        <p>Bu dünyadaki en özel kişi olduğun için, senin için bu siteyi yaptım!</p>
+        
+        <div class="gallery">
+            <img src="photo1.jpg" alt="Bizim Fotoğrafımız">
+            <img src="photo2.jpg" alt="Güzel Bir Anımız">
+            <img src="photo3.jpg" alt="En Güzel Anlardan Biri">
+        </div>
+        
+        <button class="reveal-btn" onclick="showMessage()">Bana Söylemek İstediğin Bir Şey Var mı? 🥰</button>
+        <p class="hidden-message" id="message">Seni her şeyden çok seviyorum! ❤️</p>
     </div>
     
-    <button class="reveal-btn" onclick="showMessage()">Bana Söylemek İstediğin Bir Şey Var mı? 🥰</button>
-    <p class="hidden-message" id="message">Seni her şeyden çok seviyorum! ❤️</p>
-    
     <script>
+        function checkPassword() {
+            var password = document.getElementById("passwordInput").value;
+            var correctPassword = "3112"; // Şifreyi buraya koyabilirsin
+            
+            if (password === correctPassword) {
+                document.getElementById("passwordScreen").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            } else {
+                document.getElementById("errorMessage").style.display = "block";
+            }
+        }
+        
         function showMessage() {
             document.getElementById("message").style.display = "block";
         }
