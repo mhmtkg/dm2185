@@ -50,6 +50,12 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff3366;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -57,18 +63,21 @@
         <h2>Bu siteye erişmek için şifreyi girin 🔐</h2>
         <input type="password" id="passwordInput" placeholder="Şifreyi girin">
         <button class="submit-btn" onclick="checkPassword()">Giriş Yap</button>
-        <p id="errorMessage" style="color: red; display: none;">Hatalı şifre, tekrar deneyin!</p>
+        <p id="errorMessage" style="color: red; display: none;">DEMEKKİ BENİ SEVMİYORSUN...</p>
     </div>
 
     <div id="mainContent" style="display: none;">
         <h1>Senin İçin Küçük Bir Sürpriz! ❤️</h1>
-        <p>Bu dünyadaki en özel kişi olduğun için, senin için bu siteyi yaptım!</p>
+        <p></p>
         
         <div class="gallery">
             <img src="photo1.jpg" alt="Bizim Fotoğrafımız">
             <img src="photo2.jpg" alt="Güzel Bir Anımız">
             <img src="photo3.jpg" alt="En Güzel Anlardan Biri">
         </div>
+        
+        <h2>YILDÖNÜMÜ İÇİN KALAN SÜRE ⏳</h2>
+        <p id="countdown"></p>
         
         <button class="reveal-btn" onclick="showMessage()">Bana Söylemek İstediğin Bir Şey Var mı? 🥰</button>
         <p class="hidden-message" id="message">Seni her şeyden çok seviyorum! ❤️</p>
@@ -77,7 +86,7 @@
     <script>
         function checkPassword() {
             var password = document.getElementById("passwordInput").value;
-            var correctPassword = "3112"; // Şifreyi buraya koyabilirsin
+            var correctPassword = "2158"; // Şifreyi buraya koyabilirsin
             
             if (password === correctPassword) {
                 document.getElementById("passwordScreen").style.display = "none";
@@ -90,6 +99,26 @@
         function showMessage() {
             document.getElementById("message").style.display = "block";
         }
+        
+        function updateCountdown() {
+            var targetDate = new Date("July 16, 2025 00:00:00").getTime();
+            var now = new Date().getTime();
+            var timeLeft = targetDate - now;
+
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + " gün " + hours + " saat " + minutes + " dakika " + seconds + " saniye kaldı!";
+
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "Bugün özel gün! 🎉";
+            }
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
