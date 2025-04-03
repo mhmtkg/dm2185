@@ -56,16 +56,26 @@
             color: #ff3366;
             margin-top: 20px;
         }
+        /* Yeni eklediğimiz hata fotoğrafı için stil */
+        #errorImage {
+            display: none;
+            width: 200px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    <!-- Şifre Girişi Ekranı -->
     <div id="passwordScreen">
         <h2>Bu siteye erişmek için şifreyi girin 🔐</h2>
         <input type="password" id="passwordInput" placeholder="Şifreyi girin">
         <button class="submit-btn" onclick="checkPassword()">Giriş Yap</button>
-        <p id="errorMessage" style="color: red; display: none;">DEMEKKİ BENİ SEVMİYORSUN...</p>
+        <p id="errorMessage" style="color: red; display: none;">Hatalı şifre, tekrar deneyin!</p>
+        <!-- Hatalı şifreyi girince görünecek fotoğraf -->
+        <img id="errorImage" src="wrong_password.jpg" alt="Yanlış Şifre!" />
     </div>
 
+    <!-- Ana İçerik Ekranı -->
     <div id="mainContent" style="display: none;">
         <h1>Senin İçin Küçük Bir Sürpriz! ❤️</h1>
         <p></p>
@@ -84,22 +94,28 @@
     </div>
     
     <script>
+        // Şifreyi kontrol eden fonksiyon
         function checkPassword() {
             var password = document.getElementById("passwordInput").value;
-            var correctPassword = "2158"; // Şifreyi buraya koyabilirsin
+            var correctPassword = "3112"; // Doğru şifreyi buraya ekle
             
             if (password === correctPassword) {
+                // Şifre doğruysa, giriş ekranını gizle ve içerik ekranını göster
                 document.getElementById("passwordScreen").style.display = "none";
                 document.getElementById("mainContent").style.display = "block";
             } else {
-                document.getElementById("errorMessage").style.display = "block";
+                // Şifre yanlışsa, hata mesajını ve resmi göster
+                document.getElementById("errorMessage").style.display = "block"; 
+                document.getElementById("errorImage").style.display = "block"; // Fotoğrafı göster
             }
         }
         
+        // Mesajı gösteren fonksiyon
         function showMessage() {
             document.getElementById("message").style.display = "block";
         }
         
+        // Geri sayım fonksiyonu
         function updateCountdown() {
             var targetDate = new Date("July 16, 2025 00:00:00").getTime();
             var now = new Date().getTime();
